@@ -1,12 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { clsx } from "clsx";
 
-/**
- * Logo da Vivassol: símbolo (mandala arco-íris) + wordmark.
- * O símbolo vem do asset oficial; o wordmark é tipográfico (Sora) para
- * nitidez perfeita em qualquer tamanho e tela.
- */
+// basePath do GitHub Pages — vazio quando tiver domínio próprio
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export function Logo({
   variant = "dark",
   showText = true,
@@ -22,19 +19,19 @@ export function Logo({
       aria-label="Vivassol — página inicial"
       className={clsx("group inline-flex items-center gap-2.5", className)}
     >
-      <Image
-        src="/icons/web-app-manifest-192x192.png"
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`${BASE}/icons/favicon-96x96.png`}
         alt="Vivassol"
-        width={40}
-        height={40}
-        priority
+        width={36}
+        height={36}
         className="h-9 w-9 transition-transform duration-500 group-hover:rotate-[36deg]"
       />
       {showText && (
         <span className="flex flex-col leading-none">
           <span
             className={clsx(
-              "font-display text-xl font-600 tracking-tight",
+              "font-display text-xl font-semibold tracking-tight",
               variant === "light" ? "text-white" : "text-ink"
             )}
           >

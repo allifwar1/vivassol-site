@@ -10,26 +10,30 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
 body {
   background-color: theme("colors.surface.DEFAULT");
   color: theme("colors.ink.DEFAULT");
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.font-display,
+[class*="font-display"] {
+  font-family: 'Sora', system-ui, sans-serif;
 }
 
 @layer components {
-  /* Texto com o gradiente assinatura da marca */
   .text-rainbow {
     @apply bg-brand-rainbow bg-clip-text text-transparent;
     background-size: 200% auto;
   }
 
-  /* Container padrão do site */
   .container-vs {
     @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
   }
 
-  /* Linha decorativa com o arco-íris */
   .rule-rainbow {
     @apply h-1 w-full rounded-full bg-brand-rainbow;
     background-size: 200% auto;
