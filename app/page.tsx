@@ -9,7 +9,7 @@ import { ProdutosDestaque } from "./components/home/ProdutosDestaque";
 export default function HomePage() {
   return (
     <>
-      <Hero />
+<Hero />
       <FeatureStrip />
       <SegmentsSection />
       <ProdutosDestaque />
