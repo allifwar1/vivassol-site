@@ -2,7 +2,7 @@ name: Deploy para GitHub Pages
 
 on:
   push:
-    branches: [main, claude/zealous-ptolemy-on26ed]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
