@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "./components/Button";
 import { Reveal } from "./components/Reveal";
 import { Hero } from "./components/home/Hero";
@@ -9,6 +10,18 @@ import { ProdutosDestaque } from "./components/home/ProdutosDestaque";
 export default function HomePage() {
   return (
     <>
+      {/* Botão flutuante para a experiência imersiva */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <Link
+          href="/home-v2"
+          className="flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-bold text-white shadow-lift transition-all duration-300 hover:scale-105 hover:shadow-xl"
+          style={{ boxShadow: "0 8px 32px rgba(17,17,24,0.35)" }}
+        >
+          <span className="text-base">✦</span>
+          Experiência imersiva
+        </Link>
+      </div>
+
       <Hero />
       <FeatureStrip />
       <SegmentsSection />
