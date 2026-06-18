@@ -4,6 +4,7 @@ import { Hero } from "./components/home/Hero";
 import { SegmentsSection } from "./components/home/SegmentsSection";
 import { Studio3DTeaser } from "./components/home/Studio3DTeaser";
 import { FeatureStrip } from "./components/home/FeatureStrip";
+import { ProdutosDestaque } from "./components/home/ProdutosDestaque";
 
 export default function HomePage() {
   return (
@@ -11,9 +12,9 @@ export default function HomePage() {
       <Hero />
       <FeatureStrip />
       <SegmentsSection />
+      <ProdutosDestaque />
       <Studio3DTeaser />
 
-      {/* Chamada final */}
       <section className="container-vs py-24">
         <Reveal className="relative overflow-hidden rounded-4xl bg-surface-dark px-8 py-16 text-center text-white sm:px-16 sm:py-24">
           <div

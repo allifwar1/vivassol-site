@@ -1,23 +1,30 @@
+import Link from "next/link";
 import { Reveal } from "../Reveal";
 
-const STUDIO = [
+const PRODUTOS_3D = [
   {
-    title: "Caneca",
-    line: "Sua imaginação em uma caneca",
-    desc: "Gire, troque a estampa e veja a mágica acontecer.",
+    href: "/produto/vs-can-001",
+    titulo: "Caneca",
+    frase: "Sua imaginação em uma caneca",
+    desc: "Gire, troque a estampa, veja a mágica acontecer.",
     gradient: "linear-gradient(135deg, #F5801A, #F5C200)",
+    icon: "☕",
   },
   {
-    title: "Body de bebê",
-    line: "O nome do bebê, em 3D",
+    href: "/produto/vs-bod-001",
+    titulo: "Body de bebê",
+    frase: "O nome do bebê, em cada detalhe",
     desc: "Escolha o tema e veja a peça ganhar vida.",
     gradient: "linear-gradient(135deg, #D02060, #7B2DBE)",
+    icon: "👶",
   },
   {
-    title: "Camiseta",
-    line: "Sua arte, no mockup na hora",
-    desc: "Envie a imagem e veja na camiseta instantaneamente.",
+    href: "/produto/vs-cam-001",
+    titulo: "Camiseta",
+    frase: "Sua arte, do jeito que você imaginou",
+    desc: "Envie a imagem e veja o mockup instantaneamente.",
     gradient: "linear-gradient(135deg, #1A7ACA, #00A88A)",
+    icon: "👕",
   },
 ];
 
@@ -30,32 +37,36 @@ export function Studio3DTeaser() {
             Estúdio Vivassol
           </span>
           <h2 className="mt-3 font-display text-3xl font-bold sm:text-4xl">
-            Crie e veja em <span className="text-rainbow animate-rainbow-pan">3D</span>
+            Crie e veja em{" "}
+            <span className="text-rainbow animate-rainbow-pan">3D</span>
           </h2>
           <p className="mt-4 text-white/60">
-            Monte a personalização e visualize o produto girando, antes de comprar.
-            Nada de surpresas — só o que você imaginou.
+            Monte a personalização e veja o produto antes de comprar.
           </p>
         </Reveal>
 
         <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {STUDIO.map((s, i) => (
-            <Reveal key={s.title} delay={i * 0.1}>
-              <div className="group relative h-full overflow-hidden rounded-4xl border border-white/10 bg-white/[0.03] p-8 transition-colors hover:bg-white/[0.06]">
+          {PRODUTOS_3D.map((s, i) => (
+            <Reveal key={s.titulo} delay={i * 0.1}>
+              <Link
+                href={s.href}
+                className="group relative flex h-full flex-col overflow-hidden rounded-4xl border border-white/10 bg-white/[0.03] p-8 transition-colors hover:bg-white/[0.06]"
+              >
                 <div
                   className="grid h-28 w-28 place-items-center rounded-3xl shadow-lift transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3"
                   style={{ background: s.gradient }}
                 >
-                  <span className="font-display text-2xl font-bold text-white/90">
-                    {s.title[0]}
-                  </span>
+                  <span className="text-5xl">{s.icon}</span>
                 </div>
-                <h3 className="mt-6 font-display text-lg font-bold">{s.line}</h3>
+                <h3 className="mt-6 font-display text-lg font-bold">{s.frase}</h3>
                 <p className="mt-2 text-sm text-white/60">{s.desc}</p>
-                <span className="mt-4 inline-block rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white/70">
-                  visualizador em breve
+                <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-white/80 transition-gap duration-300 group-hover:gap-3">
+                  Personalizar
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
                 </span>
-              </div>
+              </Link>
             </Reveal>
           ))}
         </div>
