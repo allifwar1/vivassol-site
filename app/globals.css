@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: theme("colors.surface.DEFAULT");
+  color: theme("colors.ink.DEFAULT");
+}
+
+@layer components {
+  /* Texto com o gradiente assinatura da marca */
+  .text-rainbow {
+    @apply bg-brand-rainbow bg-clip-text text-transparent;
+    background-size: 200% auto;
+  }
+
+  /* Container padrão do site */
+  .container-vs {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  /* Linha decorativa com o arco-íris */
+  .rule-rainbow {
+    @apply h-1 w-full rounded-full bg-brand-rainbow;
+    background-size: 200% auto;
+  }
+}
