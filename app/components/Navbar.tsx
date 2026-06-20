@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { clsx } from "clsx";
 import { Logo } from "./Logo";
 
@@ -12,8 +13,15 @@ const LINKS = [
   { href: "/contato", label: "Contato" },
 ];
 
+const HOME_VARIANTS = [
+  { href: "/", label: "V1" },
+  { href: "/home-v2", label: "V2" },
+  { href: "/home-v3", label: "V3" },
+];
+
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-50 border-b border-ink-line/60 bg-surface/80 backdrop-blur-xl">
@@ -32,6 +40,23 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
+        </div>
+
+        {/* Home variant switcher */}
+        <div className="hidden items-center gap-1 md:flex">
+          {HOME_VARIANTS.map((v) => {
+            const isActive = pathname === v.href || (v.href !== "/" && pathname.startsWith(v.href));
+            return (
+              <Link key={v.href} href={v.href} title={`Home ${v.label}`}
+                className={clsx(
+                  "flex h-7 w-9 flex-col items-center justify-center gap-[3px] rounded-lg transition-all",
+                  isActive ? "bg-ink text-white" : "text-ink-soft hover:bg-surface-soft hover:text-ink"
+                )}>
+                <HomeIcon />
+                <span className="text-[9px] font-bold leading-none">{v.label}</span>
+              </Link>
+            );
+          })}
         </div>
 
         <div className="flex items-center gap-2">
@@ -83,6 +108,14 @@ export function Navbar() {
         </div>
       </div>
     </header>
+  );
+}
+
+function HomeIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+    </svg>
   );
 }
 
