@@ -8,11 +8,14 @@ export function Logo({
   variant = "dark",
   showText = true,
   className,
+  size,
 }: {
   variant?: "dark" | "light";
   showText?: boolean;
   className?: string;
+  size?: number;
 }) {
+  const px = size ?? 36;
   return (
     <Link
       href="/"
@@ -23,9 +26,10 @@ export function Logo({
       <img
         src={`${BASE}/icons/favicon-96x96.png`}
         alt="Vivassol"
-        width={36}
-        height={36}
-        className="h-9 w-9 transition-transform duration-500 group-hover:rotate-[36deg]"
+        width={px}
+        height={px}
+        style={{ width: px, height: px }}
+        className="transition-transform duration-500 group-hover:rotate-[36deg]"
       />
       {showText && (
         <span className="flex flex-col leading-none">
