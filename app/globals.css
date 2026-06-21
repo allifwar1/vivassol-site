@@ -47,11 +47,20 @@ body {
 .float { animation: floaty 6s ease-in-out infinite; }
 .float2 { animation: floaty2 7s ease-in-out infinite; }
 
-/* hero-mv responsive */
-.hero-mv { width: 460px; height: 550px; }
-@media (max-width: 768px) {
-  .hero-mv { width: 230px; height: 290px; }
+/* hero-mv responsive — caneca 3D nunca estoura a tela */
+.hero-mv { width: min(78vw, 300px); height: min(90vw, 360px); }
+@media (min-width: 1024px) {
+  .hero-mv { width: 420px; height: 500px; }
 }
+
+/* movimento mais sutil no celular para não cansar */
+@media (max-width: 767px) {
+  @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  @keyframes floaty2 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(9px); } }
+}
+
+/* evita scroll horizontal acidental em qualquer página */
+html, body { overflow-x: hidden; max-width: 100%; }
 
 @layer components {
   .text-rainbow {

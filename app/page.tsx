@@ -125,20 +125,21 @@ function HeroArt({ slide, modelLoaded }: { slide: typeof SLIDES[0]; modelLoaded:
 
   if (art === "brand") {
     return (
-      <div className="relative flex items-center justify-center" style={{ minHeight: 440 }}>
+      <div className="relative flex items-center justify-center min-h-[260px] lg:min-h-[440px]">
         <div className="absolute rounded-full blur-3xl opacity-50"
-          style={{ width: 420, height: 420, background: `radial-gradient(circle, ${accent}55, transparent 65%)` }} />
-        <div className="absolute float2" style={{ top: "10%", left: "15%" }}>
-          <div className="rounded-2xl" style={{ width: 44, height: 44, background: accent2, opacity: 0.8, transform: "rotate(14deg)" }} />
+          style={{ width: "min(80vw,420px)", height: "min(80vw,420px)", background: `radial-gradient(circle, ${accent}55, transparent 65%)` }} />
+        <div className="absolute float2" style={{ top: "8%", left: "14%" }}>
+          <div className="rounded-2xl w-8 h-8 lg:w-11 lg:h-11" style={{ background: accent2, opacity: 0.8, transform: "rotate(14deg)" }} />
         </div>
-        <div className="absolute float" style={{ bottom: "12%", right: "12%" }}>
-          <div className="rounded-full" style={{ width: 26, height: 26, background: accent }} />
+        <div className="absolute float" style={{ bottom: "10%", right: "14%" }}>
+          <div className="rounded-full w-5 h-5 lg:w-6 lg:h-6" style={{ background: accent }} />
         </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`${BASE}/icons/vivassol-symbol.png`}
           alt="Vivassol"
-          style={{ width: 300, height: 300, animation: "spinslow 36s linear infinite", filter: "drop-shadow(0 30px 60px rgba(0,0,0,.16))" }}
+          className="w-[190px] h-[190px] lg:w-[300px] lg:h-[300px]"
+          style={{ animation: "spinslow 36s linear infinite", filter: "drop-shadow(0 30px 60px rgba(0,0,0,.16))" }}
           draggable={false}
         />
       </div>
@@ -147,10 +148,10 @@ function HeroArt({ slide, modelLoaded }: { slide: typeof SLIDES[0]; modelLoaded:
 
   if (art === "mug") {
     return (
-      <div className="relative flex items-center justify-center" style={{ minHeight: 440 }}>
+      <div className="relative flex items-center justify-center min-h-[300px] lg:min-h-[440px]">
         <div className="absolute rounded-full blur-3xl opacity-50"
-          style={{ width: 420, height: 420, background: `radial-gradient(circle, ${accent}55, transparent 65%)` }} />
-        {modelLoaded && (
+          style={{ width: "min(80vw,420px)", height: "min(80vw,420px)", background: `radial-gradient(circle, ${accent}55, transparent 65%)` }} />
+        {modelLoaded ? (
           <model-viewer
             class="hero-mv"
             src={`${BASE}/models/caneca.glb`}
@@ -169,16 +170,14 @@ function HeroArt({ slide, modelLoaded }: { slide: typeof SLIDES[0]; modelLoaded:
             touch-action="pan-y"
             interaction-prompt="none"
             style={{
-              width: 460, height: 550,
               background: "transparent",
               filter: `drop-shadow(0 40px 60px ${accent}55)`
             } as React.CSSProperties}
           />
+        ) : (
+          <div className="rounded-[34px] hero-mv" style={{ background: `linear-gradient(160deg, ${accent}22, ${accent2}33)` }} />
         )}
-        {!modelLoaded && (
-          <div className="rounded-[34px]" style={{ width: 330, height: 400, background: `linear-gradient(160deg, ${accent}22, ${accent2}33)` }} />
-        )}
-        <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 rounded-2xl px-5 py-2 font-display font-bold text-white text-sm shadow-xl whitespace-nowrap"
+        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded-2xl px-4 py-2 font-display font-bold text-white text-xs lg:text-sm shadow-xl whitespace-nowrap"
           style={{ background: `linear-gradient(135deg, ${accent}, ${accent2})` }}>
           {slide.tag} Personalizada
         </div>
@@ -189,33 +188,30 @@ function HeroArt({ slide, modelLoaded }: { slide: typeof SLIDES[0]; modelLoaded:
   // generic art: colored gradient card with floating shapes
   const [c1, c2, c3] = artColors;
   return (
-    <div className="relative flex items-center justify-center" style={{ minHeight: 440 }}>
+    <div className="relative flex items-center justify-center min-h-[300px] lg:min-h-[440px]">
       <div className="absolute rounded-full blur-3xl opacity-50"
-        style={{ width: 420, height: 420, background: `radial-gradient(circle, ${accent}55, transparent 65%)` }} />
-      <div className="absolute bottom-6 rounded-[50%] blur-xl opacity-40"
-        style={{ width: 340, height: 46, background: `radial-gradient(ellipse, ${accent}, transparent 70%)` }} />
+        style={{ width: "min(80vw,420px)", height: "min(80vw,420px)", background: `radial-gradient(circle, ${accent}55, transparent 65%)` }} />
 
       {/* floating shapes */}
-      <div className="absolute float" style={{ top: "8%", left: "12%" }}>
-        <div className="rounded-2xl" style={{ width: 54, height: 54, background: c2 || accent2, opacity: 0.85, transform: "rotate(12deg)" }} />
+      <div className="absolute float" style={{ top: "6%", left: "10%" }}>
+        <div className="rounded-2xl w-9 h-9 lg:w-[54px] lg:h-[54px]" style={{ background: c2 || accent2, opacity: 0.85, transform: "rotate(12deg)" }} />
       </div>
-      <div className="absolute float2" style={{ bottom: "14%", right: "10%" }}>
-        <div className="rounded-full" style={{ width: 30, height: 30, background: c1 || accent }} />
+      <div className="absolute float2" style={{ bottom: "12%", right: "8%" }}>
+        <div className="rounded-full w-5 h-5 lg:w-[30px] lg:h-[30px]" style={{ background: c1 || accent }} />
       </div>
-      <div className="absolute float2" style={{ top: "18%", right: "18%" }}>
-        <div className="rounded-full" style={{ width: 14, height: 14, background: c3 || accent2, opacity: 0.7 }} />
+      <div className="absolute float2" style={{ top: "16%", right: "16%" }}>
+        <div className="rounded-full w-3 h-3 lg:w-3.5 lg:h-3.5" style={{ background: c3 || accent2, opacity: 0.7 }} />
       </div>
 
-      <div className="float rounded-[34px] shadow-2xl"
+      <div className="float rounded-[34px] shadow-2xl w-[min(70vw,280px)] h-[min(86vw,340px)] lg:w-[330px] lg:h-[400px]"
         style={{
-          width: 330, height: 400,
           background: `linear-gradient(160deg, ${accent}22, ${accent2}33)`,
           boxShadow: `0 40px 90px -30px ${accent}55`
         }}>
         <div className="w-full h-full rounded-[34px]" style={{ background: `linear-gradient(160deg, ${accent}18, ${accent2}28)` }} />
       </div>
 
-      <div className="absolute -bottom-4 -left-4 rounded-2xl px-4 py-2 font-display font-bold text-white text-sm shadow-lg"
+      <div className="absolute bottom-2 left-2 lg:-bottom-4 lg:-left-4 rounded-2xl px-4 py-2 font-display font-bold text-white text-xs lg:text-sm shadow-lg"
         style={{ background: `linear-gradient(135deg, ${accent}, ${accent2})` }}>
         {slide.tag}
       </div>
@@ -271,8 +267,7 @@ function Hero() {
 
   return (
     <section
-      className="relative overflow-hidden"
-      style={{ minHeight: "100vh" }}
+      className="relative overflow-hidden min-h-[100svh]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -288,10 +283,10 @@ function Hero() {
       <div className="absolute left-0 right-0 bottom-0 h-[3px] opacity-60 bg-brand-rainbow" style={{ zIndex: 1 }} />
 
       {/* content */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8" style={{ paddingTop: 120, paddingBottom: 80 }}>
-        <div className="grid lg:grid-cols-2 gap-10 items-center" style={{ minHeight: "calc(100vh - 200px)" }}>
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 pt-24 pb-36 lg:pt-32 lg:pb-28">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center lg:min-h-[calc(100vh-220px)]">
           {/* text */}
-          <div key={`text-${idx}`} className="flex flex-col gap-0">
+          <div key={`text-${idx}`} className="flex flex-col gap-0 text-center lg:text-left items-center lg:items-start">
             <span
               className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] px-3 py-1.5 rounded-full self-start animate-[fade-up_0.5s_ease_forwards]"
               style={{ color: s.accent, background: "#ffffffcc", boxShadow: "0 2px 14px rgba(17,17,24,.06)" }}
@@ -312,11 +307,11 @@ function Hero() {
             >
               {s.sub}
             </p>
-            <div className="flex flex-wrap gap-4 mt-9 animate-[fade-up_0.6s_0.3s_ease_forwards] opacity-0">
-              {s.cta2Href.startsWith("http") ? (
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mt-8 w-full sm:w-auto animate-[fade-up_0.6s_0.3s_ease_forwards] opacity-0">
+              {s.cta1Href.startsWith("http") ? (
                 <a
                   href={s.cta1Href}
-                  className="inline-flex items-center gap-2 text-white font-display font-semibold px-7 py-4 rounded-full transition-transform hover:-translate-y-1"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 text-white font-display font-semibold px-7 py-4 rounded-full transition-transform hover:-translate-y-1"
                   style={{ background: `linear-gradient(120deg, ${s.accent}, ${s.accent2})`, boxShadow: `0 16px 34px -12px ${s.accent}99` }}
                 >
                   {s.cta1} <Icon name="arrow" className="w-5 h-5" />
@@ -324,7 +319,7 @@ function Hero() {
               ) : (
                 <Link
                   href={s.cta1Href}
-                  className="inline-flex items-center gap-2 text-white font-display font-semibold px-7 py-4 rounded-full transition-transform hover:-translate-y-1"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 text-white font-display font-semibold px-7 py-4 rounded-full transition-transform hover:-translate-y-1"
                   style={{ background: `linear-gradient(120deg, ${s.accent}, ${s.accent2})`, boxShadow: `0 16px 34px -12px ${s.accent}99` }}
                 >
                   {s.cta1} <Icon name="arrow" className="w-5 h-5" />
@@ -334,7 +329,7 @@ function Hero() {
                 <a
                   href={s.cta2Href}
                   target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 font-display font-semibold px-7 py-4 rounded-full bg-white text-ink transition-transform hover:-translate-y-1"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 font-display font-semibold px-7 py-4 rounded-full bg-white text-ink transition-transform hover:-translate-y-1"
                   style={{ boxShadow: "0 10px 30px -14px rgba(17,17,24,.4)", border: "1px solid #ececf2" }}
                 >
                   {s.cta2}
@@ -342,7 +337,7 @@ function Hero() {
               ) : (
                 <Link
                   href={s.cta2Href}
-                  className="inline-flex items-center gap-2 font-display font-semibold px-7 py-4 rounded-full bg-white text-ink transition-transform hover:-translate-y-1"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 font-display font-semibold px-7 py-4 rounded-full bg-white text-ink transition-transform hover:-translate-y-1"
                   style={{ boxShadow: "0 10px 30px -14px rgba(17,17,24,.4)", border: "1px solid #ececf2" }}
                 >
                   {s.cta2}
@@ -401,14 +396,14 @@ function Hero() {
           </div>
 
           {/* arrows */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <button onClick={() => go(-1)} aria-label="Anterior"
-              className="w-12 h-12 rounded-full bg-white grid place-items-center text-ink"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white grid place-items-center text-ink"
               style={{ boxShadow: "0 10px 26px -12px rgba(17,17,24,.4)" }}>
               <Icon name="left" className="w-5 h-5" />
             </button>
             <button onClick={() => go(1)} aria-label="Próximo"
-              className="w-12 h-12 rounded-full grid place-items-center text-white"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full grid place-items-center text-white"
               style={{ background: `linear-gradient(120deg, ${s.accent}, ${s.accent2})`, boxShadow: `0 12px 26px -10px ${s.accent}aa` }}>
               <Icon name="right" className="w-5 h-5" />
             </button>
