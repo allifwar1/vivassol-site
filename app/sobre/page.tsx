@@ -5,7 +5,7 @@ export const metadata: Metadata = { title: "Sobre a Vivassol" };
 export default function SobrePage() {
   return (
     <>
-      <section style={{ background:"linear-gradient(160deg,#FFF9E9,#FFF1DB)" }} className="py-20 md:py-28">
+      <section style={{ background:"linear-gradient(160deg,#FFF9E9,#FFF1DB)" }} className="pt-28 pb-16 md:pt-36 md:pb-24">
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 max-w-3xl">
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-orange">Nossa história</span>
           <h1 className="font-display font-extrabold text-ink mt-4 leading-tight" style={{ fontSize:"clamp(2rem,4vw,3.2rem)" }}>
@@ -48,7 +48,7 @@ export default function SobrePage() {
             <a
               href="https://wa.me/5534999999999?text=Olá%2C%20tenho%20uma%20ideia%20para%20um%20personalizado!"
               target="_blank" rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 font-display font-semibold text-white px-8 py-4 rounded-full transition-opacity hover:opacity-90"
+              className="mt-8 inline-flex w-full sm:w-auto justify-center items-center gap-2 font-display font-semibold text-white px-8 py-4 rounded-full transition-opacity hover:opacity-90"
               style={{ background:"linear-gradient(120deg,#E84525,#D02060)" }}
             >
               Falar no WhatsApp

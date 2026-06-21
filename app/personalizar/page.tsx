@@ -15,7 +15,7 @@ const TODOS_PRODUTOS = [
 export default function PersonalizarPage() {
   return (
     <>
-      <section className="py-20 md:py-28" style={{ background:"linear-gradient(160deg,#F5F0FF,#EDE4FA)" }}>
+      <section className="pt-28 pb-16 md:pt-36 md:pb-24" style={{ background:"linear-gradient(160deg,#F5F0FF,#EDE4FA)" }}>
         <div className="max-w-[1280px] mx-auto px-6 md:px-10">
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-violet">Personalização</span>
           <h1 className="font-display font-extrabold text-ink mt-4 leading-tight" style={{ fontSize:"clamp(2rem,4vw,3.2rem)" }}>
@@ -87,7 +87,7 @@ export default function PersonalizarPage() {
             <a
               href="https://wa.me/5534999999999?text=Olá%2C%20tenho%20uma%20ideia%20diferente%20para%20personalizar!"
               target="_blank" rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 font-display font-semibold text-white px-8 py-4 rounded-full transition-opacity hover:opacity-90"
+              className="mt-8 inline-flex w-full sm:w-auto justify-center items-center gap-2 font-display font-semibold text-white px-8 py-4 rounded-full transition-opacity hover:opacity-90"
               style={{ background:"linear-gradient(120deg,#E84525,#D02060)" }}
             >
               Falar no WhatsApp

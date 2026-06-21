@@ -13,7 +13,7 @@ export default function BebePage() {
   return (
     <>
       {/* Hero */}
-      <section style={{ background:"linear-gradient(160deg,#FFF1E9,#FFE0E6)" }} className="py-20 md:py-28">
+      <section style={{ background:"linear-gradient(160deg,#FFF1E9,#FFE0E6)" }} className="pt-28 pb-16 md:pt-36 md:pb-24">
         <div className="max-w-[1280px] mx-auto px-6 md:px-10">
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-coral">Linha Bebê</span>
           <h1 className="font-display font-extrabold text-ink mt-4 leading-tight" style={{ fontSize:"clamp(2rem,4vw,3.2rem)" }}>
