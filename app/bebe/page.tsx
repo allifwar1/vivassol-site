@@ -3,10 +3,12 @@ import Link from "next/link";
 
 export const metadata: Metadata = { title: "Linha Bebê" };
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const PRODUTOS = [
-  { sku:"VS-BOD-001", nome:"Body Personalizado Bebê", desc:"Body 100% algodão com nome, data ou tema personalizado. Disponível em várias cores e tamanhos.", preco:"R$ 49,90", chips:["Nome","Tema","Cor","Tamanho"], color:"#E84525" },
-  { sku:"VS-KIT-001", nome:"Kit Manta + Naninha", desc:"Manta quentinha e naninha bordadas com o nome do bebê. Presente perfeito para chá de bebê.", preco:"R$ 129,90", precoOriginal:"R$ 149,90", chips:["Nome","Cor","Tema"], color:"#F5801A" },
-  { sku:"VS-PRE-001", nome:"Prendedor de Chupeta", desc:"Artesanal com nome do bebê em miçangas coloridas. Cada peça é única.", preco:"R$ 34,90", chips:["Nome","Cor"], color:"#68B82A" },
+  { sku:"VS-BOD-001", nome:"Body Personalizado Bebê", desc:"Body 100% algodão com nome, data ou tema personalizado. Disponível em várias cores e tamanhos.", preco:"R$ 49,90", chips:["Nome","Tema","Cor","Tamanho"], color:"#E84525", img:"p-body.png" },
+  { sku:"VS-KIT-001", nome:"Kit Manta + Naninha", desc:"Manta quentinha e naninha bordadas com o nome do bebê. Presente perfeito para chá de bebê.", preco:"R$ 129,90", precoOriginal:"R$ 149,90", chips:["Nome","Cor","Tema"], color:"#F5801A", img:"p-kit.png" },
+  { sku:"VS-PRE-001", nome:"Prendedor de Chupeta", desc:"Artesanal com nome do bebê em miçangas coloridas. Cada peça é única.", preco:"R$ 34,90", chips:["Nome","Cor"], color:"#68B82A", img:"p-chupeta.png" },
 ];
 
 export default function BebePage() {
@@ -31,11 +33,10 @@ export default function BebePage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {PRODUTOS.map((p) => (
               <div key={p.sku} className="rounded-3xl bg-white border border-ink-line/50 overflow-hidden flex flex-col">
-                {/* Color band */}
-                <div className="h-40" style={{ background:`linear-gradient(135deg,${p.color}22,${p.color}44)` }}>
-                  <div className="h-full flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-2xl" style={{ background:`linear-gradient(135deg,${p.color},${p.color}99)` }} />
-                  </div>
+                {/* Product image */}
+                <div className="h-40 overflow-hidden" style={{ background:`linear-gradient(135deg,${p.color}22,${p.color}44)` }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={`${BASE}/images/produtos/${p.img}`} alt={p.nome} className="w-full h-full object-cover" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display="none"; }} />
                 </div>
                 <div className="p-6 flex flex-col flex-1">
                   <h3 className="font-display font-bold text-ink text-xl leading-tight">{p.nome}</h3>

@@ -3,10 +3,12 @@ import Link from "next/link";
 
 export const metadata: Metadata = { title: "Presentes Personalizados" };
 
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const PRODUTOS = [
-  { sku:"VS-CAN-001", nome:"Caneca Personalizada", desc:"Caneca de cerâmica com arte, nome ou foto. Presente clássico que nunca sai de moda.", preco:"R$ 44,90", chips:["Nome","Arte","Foto"], color:"#7B2DBE" },
-  { sku:"VS-CAM-001", nome:"Camiseta Adulta", desc:"Camiseta 100% algodão com estampa personalizada. Unissex e disponível em vários tamanhos.", preco:"R$ 59,90", chips:["Nome","Arte","Tamanho","Cor"], color:"#1A7ACA" },
-  { sku:"VS-POL-001", nome:"Polaroides", desc:"Fotos no estilo polaroide personalizadas. Pacote com 10 unidades para decorar ou presentear.", preco:"R$ 29,90", chips:["Foto","Legenda"], color:"#D02060" },
+  { sku:"VS-CAN-001", nome:"Caneca Personalizada", desc:"Caneca de cerâmica com arte, nome ou foto. Presente clássico que nunca sai de moda.", preco:"R$ 44,90", chips:["Nome","Arte","Foto"], color:"#7B2DBE", img:"p-caneca.png" },
+  { sku:"VS-CAM-001", nome:"Camiseta Adulta", desc:"Camiseta 100% algodão com estampa personalizada. Unissex e disponível em vários tamanhos.", preco:"R$ 59,90", chips:["Nome","Arte","Tamanho","Cor"], color:"#1A7ACA", img:"p-camiseta.png" },
+  { sku:"VS-POL-001", nome:"Polaroides", desc:"Fotos no estilo polaroide personalizadas. Pacote com 10 unidades para decorar ou presentear.", preco:"R$ 29,90", chips:["Foto","Legenda"], color:"#D02060", img:"p-polaroide.png" },
 ];
 
 const OCASIOES = ["Aniversário","Dia das Mães","Dia dos Namorados","Formatura","Chá de bebê"];
@@ -33,10 +35,9 @@ export default function PresentesPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {PRODUTOS.map((p) => (
               <div key={p.sku} className="rounded-3xl bg-white border border-ink-line/50 overflow-hidden flex flex-col">
-                <div className="h-40" style={{ background:`linear-gradient(135deg,${p.color}22,${p.color}44)` }}>
-                  <div className="h-full flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-2xl" style={{ background:`linear-gradient(135deg,${p.color},${p.color}99)` }} />
-                  </div>
+                <div className="h-40 overflow-hidden" style={{ background:`linear-gradient(135deg,${p.color}22,${p.color}44)` }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={`${BASE}/images/produtos/${p.img}`} alt={p.nome} className="w-full h-full object-cover" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display="none"; }} />
                 </div>
                 <div className="p-6 flex flex-col flex-1">
                   <h3 className="font-display font-bold text-ink text-xl leading-tight">{p.nome}</h3>

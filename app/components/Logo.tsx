@@ -24,7 +24,7 @@ export function Logo({
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={`${BASE}/icons/favicon-96x96.png`}
+        src={`${BASE}/icons/vivassol-symbol.png`}
         alt="Vivassol"
         width={px}
         height={px}

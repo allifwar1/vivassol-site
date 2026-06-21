@@ -111,12 +111,12 @@ const DIFERENCIAIS = [
 ];
 
 const PRODUTOS = [
-  { nome: "Body personalizado", preco: "49,90", c1: "#E84525", c2: "#F5801A" },
-  { nome: "Kit manta + naninha", preco: "129,90", c1: "#F5801A", c2: "#F5C200" },
-  { nome: "Prendedor de chupeta", preco: "34,90", c1: "#D02060", c2: "#E84525" },
-  { nome: "Caneca personalizada", preco: "44,90", c1: "#00A88A", c2: "#1A7ACA" },
-  { nome: "Camiseta estampada", preco: "59,90", c1: "#68B82A", c2: "#F5C200" },
-  { nome: "Polaroides (kit 12)", preco: "29,90", c1: "#7B2DBE", c2: "#D02060" },
+  { nome: "Body personalizado", preco: "49,90", c1: "#E84525", c2: "#F5801A", img: "p-body.png" },
+  { nome: "Kit manta + naninha", preco: "129,90", c1: "#F5801A", c2: "#F5C200", img: "p-kit.png" },
+  { nome: "Prendedor de chupeta", preco: "34,90", c1: "#D02060", c2: "#E84525", img: "p-chupeta.png" },
+  { nome: "Caneca personalizada", preco: "44,90", c1: "#00A88A", c2: "#1A7ACA", img: "p-caneca.png" },
+  { nome: "Camiseta estampada", preco: "59,90", c1: "#68B82A", c2: "#F5C200", img: "p-camiseta.png" },
+  { nome: "Polaroides (kit 12)", preco: "29,90", c1: "#7B2DBE", c2: "#D02060", img: "p-polaroide.png" },
 ];
 
 /* ---- Hero Art ---- */
@@ -286,7 +286,7 @@ function Hero() {
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 pt-24 pb-36 lg:pt-32 lg:pb-28">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center lg:min-h-[calc(100vh-220px)]">
           {/* text */}
-          <div key={`text-${idx}`} className="flex flex-col gap-0 text-center lg:text-left items-center lg:items-start">
+          <div key={`text-${idx}`} className="flex flex-col gap-0 text-center lg:text-left items-center lg:items-start order-2 lg:order-1">
             <span
               className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] px-3 py-1.5 rounded-full self-start animate-[fade-up_0.5s_ease_forwards]"
               style={{ color: s.accent, background: "#ffffffcc", boxShadow: "0 2px 14px rgba(17,17,24,.06)" }}
@@ -347,7 +347,7 @@ function Hero() {
           </div>
 
           {/* art */}
-          <div key={`art-${idx}`} className="flex items-center justify-center">
+          <div key={`art-${idx}`} className="flex items-center justify-center order-1 lg:order-2">
             <HeroArt slide={s} modelLoaded={modelLoaded} />
           </div>
         </div>
@@ -524,9 +524,15 @@ function Produtos() {
             <Reveal key={p.nome} delay={(idx % 3) * 100}>
               <div className="rounded-[28px] bg-white overflow-hidden transition-transform hover:-translate-y-2 duration-300 h-full"
                 style={{ boxShadow: "0 24px 60px -38px rgba(17,17,24,.45)", border: "1px solid #f0f0f4" }}>
-                {/* colored top band */}
-                <div className="h-48 w-full" style={{ background: `linear-gradient(160deg, ${p.c1}22, ${p.c2}33)` }}>
-                  <div className="w-full h-full" style={{ background: `linear-gradient(160deg, ${p.c1}18, ${p.c2}28)` }} />
+                {/* product image */}
+                <div className="h-48 w-full overflow-hidden" style={{ background: `linear-gradient(160deg, ${p.c1}22, ${p.c2}33)` }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`${BASE}/images/produtos/${p.img}`}
+                    alt={p.nome}
+                    className="w-full h-full object-cover"
+                    onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                  />
                 </div>
                 <div className="p-6">
                   <h3 className="font-display font-bold text-ink text-xl">{p.nome}</h3>
