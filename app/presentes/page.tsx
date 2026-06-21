@@ -37,7 +37,7 @@ export default function PresentesPage() {
               <div key={p.sku} className="rounded-3xl bg-white border border-ink-line/50 overflow-hidden flex flex-col">
                 <div className="h-40 overflow-hidden" style={{ background:`linear-gradient(135deg,${p.color}22,${p.color}44)` }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={`${BASE}/images/produtos/${p.img}`} alt={p.nome} className="w-full h-full object-cover" onError={(e) => { (e.currentTarget as HTMLImageElement).style.display="none"; }} />
+                  <img src={`${BASE}/images/produtos/${p.img}`} alt={p.nome} className="w-full h-full object-cover" />
                 </div>
                 <div className="p-6 flex flex-col flex-1">
                   <h3 className="font-display font-bold text-ink text-xl leading-tight">{p.nome}</h3>
