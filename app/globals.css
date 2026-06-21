@@ -24,6 +24,35 @@ body {
   font-family: 'Sora', system-ui, sans-serif;
 }
 
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-22px); }
+}
+@keyframes floaty2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(16px); }
+}
+@keyframes spinslow {
+  to { transform: rotate(360deg); }
+}
+@keyframes progressFill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes progressRetract {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+
+.float { animation: floaty 6s ease-in-out infinite; }
+.float2 { animation: floaty2 7s ease-in-out infinite; }
+
+/* hero-mv responsive */
+.hero-mv { width: 460px; height: 550px; }
+@media (max-width: 768px) {
+  .hero-mv { width: 230px; height: 290px; }
+}
+
 @layer components {
   .text-rainbow {
     @apply bg-brand-rainbow bg-clip-text text-transparent;
