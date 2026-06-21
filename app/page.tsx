@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { Reveal } from "./components/Reveal";
+import { ProdutosSection } from "./components/ProdutosGrid";
 
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
@@ -507,58 +508,9 @@ function DoisMundos() {
   );
 }
 
-/* ---- Products Grid ---- */
+/* ---- Products Grid (dados dinâmicos da planilha) ---- */
 function Produtos() {
-  return (
-    <section className="py-24 md:py-32" style={{ background: "linear-gradient(180deg,#FAFAFA,#F3F1F7)" }}>
-      <div className="mx-auto w-full max-w-7xl px-5 sm:px-8">
-        <Reveal>
-          <div className="mb-14">
-            <span className="text-xs font-bold uppercase tracking-[0.2em]" style={{ color: "#7B2DBE" }}>Mais amados</span>
-            <h2 className="font-display font-extrabold text-ink mt-4 leading-[1.05] tracking-tight"
-              style={{ fontSize: "clamp(2rem,3.6vw,3.2rem)" }}>Os favoritos da Vivassol</h2>
-          </div>
-        </Reveal>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
-          {PRODUTOS.map((p, idx) => (
-            <Reveal key={p.nome} delay={(idx % 3) * 100}>
-              <div className="rounded-[28px] bg-white overflow-hidden transition-transform hover:-translate-y-2 duration-300 h-full"
-                style={{ boxShadow: "0 24px 60px -38px rgba(17,17,24,.45)", border: "1px solid #f0f0f4" }}>
-                {/* product image */}
-                <div className="h-48 w-full overflow-hidden" style={{ background: `linear-gradient(160deg, ${p.c1}22, ${p.c2}33)` }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`${BASE}/images/produtos/${p.img}`}
-                    alt={p.nome}
-                    className="w-full h-full object-cover"
-                    onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-display font-bold text-ink text-xl">{p.nome}</h3>
-                  <div className="flex items-end justify-between mt-5">
-                    <div>
-                      <span className="text-xs text-ink-soft">a partir de</span>
-                      <div className="font-display font-extrabold text-ink text-2xl leading-none">R$ {p.preco}</div>
-                    </div>
-                    <a
-                      href="https://wa.me/5534999999999"
-                      target="_blank" rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 font-display font-semibold text-sm text-white px-5 py-3 rounded-full"
-                      style={{ background: `linear-gradient(120deg, ${p.c1}, ${p.c2})` }}
-                    >
-                      <Icon name="wpp" className="w-4 h-4" />
-                      Pedir
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  return <ProdutosSection />;
 }
 
 /* ---- Dark CTA ---- */
